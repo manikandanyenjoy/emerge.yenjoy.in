@@ -47,6 +47,49 @@ $(document).ready(function () {
     $("#usernames").keyup(function () {
         validateUsername();
     });
+  
+    $('.ham_icon').on('click', function(e) {
+        e.preventDefault();
+        $(this).toggleClass('toggled');
+      })
+      $('.ham_icon').on('click', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().toggleClass('menu_active');
+        if($('.header-nav').hasClass('menu_active')){
+            $('body').css('overflow-y', 'hidden');
+          }
+          else{
+            $('body').css('overflow-y', 'auto');
+          }
+      })
+
+      $('.radio-btn-plot p label').click(function () {
+       $('.svg-arrow-img').css('display', 'none');
+       $('.both-forms').css({
+        'opacity' : '1',
+        'cursor' : 'auto',
+        'pointer-events' : 'auto',
+        'user-select' : 'auto'
+     });
+    });
+
+     $('.lender-rb label').click(function () {
+        $('.borrower-form.documents-wrap').css('display', 'none');
+        $('.lender-form.documents-wrap').css('display', 'flex');
+    }); 
+    $('.borrower-rb label').click(function () {
+        $('.borrower-form.documents-wrap').css('display', 'flex');
+        $('.lender-form.documents-wrap').css('display', 'none');
+    }); 
+   
+
+
+    // Validate Username
+    // $("#usercheck").hide();
+    // let usernameError = true;
+    // $("#usernames").keyup(function () {
+    //     validateUsername();
+    // });
     
         // element scroll top in view
         var winTop, winBottom;
@@ -89,18 +132,18 @@ $(document).ready(function () {
     }
     
     // Validate Email
-    const email = document.getElementById("email");
-    email.addEventListener("blur", () => {
-        let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-        let s = email.value;
-        if (regex.test(s)) {
-        email.classList.remove("is-invalid");
-        emailError = true;
-        } else {
-        email.classList.add("is-invalid");
-        emailError = false;
-        }
-    });
+    // const email = document.getElementById("email");
+    // email.addEventListener("blur", () => {
+    //     let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+    //     let s = email.value;
+    //     if (regex.test(s)) {
+    //     email.classList.remove("is-invalid");
+    //     emailError = true;
+    //     } else {
+    //     email.classList.add("is-invalid");
+    //     emailError = false;
+    //     }
+    // });
     
     // Validate Password
     $("#passcheck").hide();
@@ -149,27 +192,72 @@ $(document).ready(function () {
     }
     
     // Submit button
-    $("#submitbtn").click(function () {
-        validateUsername();
-        validatePassword();
-        validateConfirmPassword();
-        validateEmail();
-        if (
-        usernameError == true &&
-        passwordError == true &&
-        confirmPasswordError == true &&
-        emailError == true
-        ) {
-        return true;
-        } else {
-        return false;
-        }
-    });
+    // $("#submitbtn").click(function () {
+    //     validateUsername();
+    //     validatePassword();
+    //     validateConfirmPassword();
+    //     validateEmail();
+    //     if (
+    //     usernameError == true &&
+    //     passwordError == true &&
+    //     confirmPasswordError == true &&
+    //     emailError == true
+    //     ) {
+    //     return true;
+    //     } else {
+    //     return false;
+    //     }
+    // });
 
+//kyc Form submit
+
+  
+if ($("#kycForm").length > 0) {
+    alert("hi");
+$("#kycForm").validate({
+rules: {
+pan: {
+required: true,
+maxlength: 50
+},
+},
+messages: {
+pan: {
+required: "Please enter pan",
+maxlength: "Your pan maxlength should be 50 characters long."
+},
+},
+submitHandler: function(form) {
+$.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+$('#submitbtn').html('Please Wait...');
+$("#submitbtn"). attr("disabled", true);
+$.ajax({
+url: "{{url('kyc_create')}}",
+type: "POST",
+data: $('#kycForm').serialize(),
+success: function( response ) {
+$('#submitbtn').html('Submit');
+$("#submitbtn"). attr("disabled", false);
+alert('Ajax form has been submitted successfully');
+document.getElementById("kycForm").reset(); 
+}
+});
+}
+})
+}
 
 
 
     }); 
+
+
+
+
+}); 
 
  
     
