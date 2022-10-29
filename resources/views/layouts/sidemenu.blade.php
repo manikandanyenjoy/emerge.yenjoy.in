@@ -12,10 +12,11 @@
                 <li><a href="javascript:;">Settings</a></li>
                 <li><a href="javascript:;">Bank Account Details</a></li>
                 <li><a href="javascript:;">Nominee Details</a></li>
-                <li><a href="javascript:;">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
                 <li class="static-label"><label>Contact</label></li>
-                <li>9876543210</li>
-                <li>emailid@gmail.com</li>
+                
+                <li>{{ Auth::user()->phone }}</li>
+                <li>{{ Auth::user()->email }}</li>
             </ul>
         </div>
     </div>
