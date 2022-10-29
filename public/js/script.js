@@ -250,13 +250,6 @@ document.getElementById("kycForm").reset();
 })
 }
 
-
-
-    }); 
-
-
-
-
 }); 
 
  
