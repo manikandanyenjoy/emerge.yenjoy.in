@@ -13,8 +13,10 @@
 
             <div class="col-lg-5 p-0">
                 <div class="sign-in">
-                    @if (isset($data))
+                    @if (isset($data) && $data == 'borrower')
                         <h2>{{ __('Borrowers Login') }}</h2>
+                    @elseif(isset($data) && $data == 'admin')
+                        <h2>{{ __('Admin Login') }}</h2>
                     @else
                         <h2>{{ __('Lenders Login') }}</h2>
                     @endif
@@ -35,6 +37,7 @@
                                 </span>
                             @enderror
                         </div>
+                        @if(isset($data) && $data != 'admin')
                         <div class="form-group">
                             <label for="user">
                                 Mobile Number
@@ -42,7 +45,7 @@
                             <input type="text" name="mobilenumber" required id="number" class="form-control">
 
                         </div>
-
+                        @endif
                         <div class="form-group">
                             <label for="password">
                                 Password

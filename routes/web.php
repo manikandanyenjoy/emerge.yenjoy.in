@@ -34,3 +34,9 @@ Route::post('/test/otp-request', [App\Http\Controllers\OtpController::class, 're
 Route::post('/test/otp-validate', [App\Http\Controllers\OtpController::class, 'validateOtp'])->name('validateOtp');
 Route::post('/test/otp-resend', [App\Http\Controllers\OtpController::class, 'resendOtp'])->name('resendOtp');
 Route::get('/borrowerdashboard', [App\Http\Controllers\HomeController::class, 'borrowerDashboard'])->name('borrowerDashboard');
+
+
+//admin
+Route::get('/adminregister', [App\Http\Controllers\Admin\AdminLandingController::class, 'adminRegister'])->name('adminRegister');
+Route::get('/admin', [App\Http\Controllers\Admin\AdminLandingController::class, 'adminLogin'])->name('adminLogin');
+Route::get('/dashboard', [App\Http\Controllers\Admin\UserManagementController::class, 'userList'])->name('userList');

@@ -35,6 +35,8 @@ class LoginController extends Controller
         }elseif($user_role==2){
             //borrower Dashboard
             return '/borrowerdashboard';
+        }else{
+            return '/dashboard';
         }
         
     }

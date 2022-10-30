@@ -66,8 +66,10 @@
                                 </span>
                             @enderror
                         </div>
-                        @if (isset($data))
+                        @if (isset($data) && $data == 'borrower')
                             <input type="hidden" value="2" name="register_role">
+                        @elseif(isset($data) && $data == 'admin')
+                            <input type="hidden" value="3" name="register_role">
                         @else
                             <input type="hidden" value="1" name="register_role">
                         @endif
