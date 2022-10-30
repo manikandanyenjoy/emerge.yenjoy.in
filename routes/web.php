@@ -30,6 +30,7 @@ Route::get('/borrower', [App\Http\Controllers\Auth\RegisterController::class, 'b
 Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test/purchase', [App\Http\Controllers\OtpController::class, 'confirmationPage']);
+Route::post('/kyc_create', [App\Http\Controllers\KycController::class, 'create'])->name('kyc_create');
 Route::post('/test/otp-request', [App\Http\Controllers\OtpController::class, 'requestForOtp'])->name('requestForOtp');
 Route::post('/test/otp-validate', [App\Http\Controllers\OtpController::class, 'validateOtp'])->name('validateOtp');
 Route::post('/test/otp-resend', [App\Http\Controllers\OtpController::class, 'resendOtp'])->name('resendOtp');

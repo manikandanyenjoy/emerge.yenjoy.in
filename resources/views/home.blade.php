@@ -279,7 +279,7 @@
             
             <div class="submit form-submit">
                 <button class="close close-bn" data-dismiss="modal" aria-label="Close">Close</button>
-                <input type="submit" id="submitbtn" value="Update Details" class="btn btn-primary">
+                <input type="submit" id="kycsubmitbtn" value="Update Details" class="btn btn-primary">
              </div>
         </form>
         </div>

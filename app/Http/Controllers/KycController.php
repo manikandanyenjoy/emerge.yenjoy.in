@@ -22,12 +22,14 @@ class KycController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $validatedData = $request->validate([
-          'name' => 'required'
+              'pan' => array(
+                                        'required',
+                                        'regex:/([A-Z]{5}[0-9]{4}[A-Z]{1})/u'
+                                    ),
         ]);
- 
         // $save = new Contact;
  
         // $save->name = $request->name;
@@ -37,10 +39,6 @@ class KycController extends Controller
         // $emp->save();
  
         return redirect('home')->with('status', 'Ajax Form Data Has Been validated and store into database');
- 
-    }
-}
-
     }
 
     /**
