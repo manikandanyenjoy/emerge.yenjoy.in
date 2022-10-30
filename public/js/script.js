@@ -42,94 +42,51 @@ $(document).ready(function () {
 
 
     // Validate Username
-    $("#usercheck").hide();
-    let usernameError = true;
-    $("#usernames").keyup(function () {
-        validateUsername();
-    });
-  
-    $('.ham_icon').on('click', function(e) {
-        e.preventDefault();
-        $(this).toggleClass('toggled');
-      })
-      $('.ham_icon').on('click', function(e) {
-        e.preventDefault();
-        $(this).parent().parent().toggleClass('menu_active');
-        if($('.header-nav').hasClass('menu_active')){
-            $('body').css('overflow-y', 'hidden');
-          }
-          else{
-            $('body').css('overflow-y', 'auto');
-          }
-      })
-
-      $('.radio-btn-plot p label').click(function () {
-       $('.svg-arrow-img').css('display', 'none');
-       $('.both-forms').css({
-        'opacity' : '1',
-        'cursor' : 'auto',
-        'pointer-events' : 'auto',
-        'user-select' : 'auto'
-     });
-    });
-
-     $('.lender-rb label').click(function () {
-        $('.borrower-form.documents-wrap').css('display', 'none');
-        $('.lender-form.documents-wrap').css('display', 'flex');
-    }); 
-    $('.borrower-rb label').click(function () {
-        $('.borrower-form.documents-wrap').css('display', 'flex');
-        $('.lender-form.documents-wrap').css('display', 'none');
-    }); 
-   
-
-
-    // Validate Username
     // $("#usercheck").hide();
     // let usernameError = true;
     // $("#usernames").keyup(function () {
     //     validateUsername();
     // });
     
-        // element scroll top in view
-        var winTop, winBottom;
-        var $animation_elements = $(".contain-wrap");
-        var $window = $(window);
-        stayScroll = false;
-        getScroll = false;
+    //     // element scroll top in view
+    //     var winTop, winBottom;
+    //     var $animation_elements = $(".contain-wrap");
+    //     var $window = $(window);
+    //     stayScroll = false;
+    //     getScroll = false;
     
-        function check_if_in_view() {
-            var d = $window.height();
-            var f = $window.scrollTop();
-            var e = f + d;
-            $.each($animation_elements, function () {
-                var c = $(this);
-                var a = c.outerHeight();
-                var b = c.offset().top;
-                var h = b + a;
-                if (h >= f && b <= e) {
-                    c.addClass("in-view");
-                }
-            });
-        }
-        $window.on("scroll resize", check_if_in_view);
-        $window.trigger("scroll");
+    //     function check_if_in_view() {
+    //         var d = $window.height();
+    //         var f = $window.scrollTop();
+    //         var e = f + d;
+    //         $.each($animation_elements, function () {
+    //             var c = $(this);
+    //             var a = c.outerHeight();
+    //             var b = c.offset().top;
+    //             var h = b + a;
+    //             if (h >= f && b <= e) {
+    //                 c.addClass("in-view");
+    //             }
+    //         });
+    //     }
+    //     $window.on("scroll resize", check_if_in_view);
+    //     $window.trigger("scroll");
 
-    function validateUsername() {
-        let usernameValue = $("#usernames").val();
-        if (usernameValue.length == "") {
-        $("#usercheck").show();
-        usernameError = false;
-        return false;
-        } else if (usernameValue.length < 3 || usernameValue.length > 10) {
-        $("#usercheck").show();
-        $("#usercheck").html("length of username must be between 3 and 10");
-        usernameError = false;
-        return false;
-        } else {
-        $("#usercheck").hide();
-        }
-    }
+    // function validateUsername() {
+    //     let usernameValue = $("#usernames").val();
+    //     if (usernameValue.length == "") {
+    //     $("#usercheck").show();
+    //     usernameError = false;
+    //     return false;
+    //     } else if (usernameValue.length < 3 || usernameValue.length > 10) {
+    //     $("#usercheck").show();
+    //     $("#usercheck").html("length of username must be between 3 and 10");
+    //     usernameError = false;
+    //     return false;
+    //     } else {
+    //     $("#usercheck").hide();
+    //     }
+    // }
     
     // Validate Email
     // const email = document.getElementById("email");
@@ -233,15 +190,15 @@ headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 }
 });
-$('#submitbtn').html('Please Wait...');
-$("#submitbtn"). attr("disabled", true);
+$('#kycsubmitbtn').html('Please Wait...');
+$("#kycsubmitbtn"). attr("disabled", true);
 $.ajax({
-url: "{{url('kyc_create')}}",
+url: '/kyc_create',
 type: "POST",
 data: $('#kycForm').serialize(),
 success: function( response ) {
-$('#submitbtn').html('Submit');
-$("#submitbtn"). attr("disabled", false);
+$('#kycsubmitbtn').html('Submit');
+$("#kycsubmitbtn"). attr("disabled", false);
 alert('Ajax form has been submitted successfully');
 document.getElementById("kycForm").reset(); 
 }
@@ -250,7 +207,9 @@ document.getElementById("kycForm").reset();
 })
 }
 
-}); 
+
+
+    }); 
 
  
     
