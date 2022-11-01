@@ -31,11 +31,11 @@ Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logou
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test/purchase', [App\Http\Controllers\OtpController::class, 'confirmationPage']);
 Route::post('/kyc_create', [App\Http\Controllers\KycController::class, 'create'])->name('kyc_create');
+Route::post('/kyc_file_submit', [App\Http\Controllers\KycController::class, 'file_submit'])->name('kyc_file_submit');
 Route::post('/test/otp-request', [App\Http\Controllers\OtpController::class, 'requestForOtp'])->name('requestForOtp');
 Route::post('/test/otp-validate', [App\Http\Controllers\OtpController::class, 'validateOtp'])->name('validateOtp');
 Route::post('/test/otp-resend', [App\Http\Controllers\OtpController::class, 'resendOtp'])->name('resendOtp');
 Route::get('/borrowerdashboard', [App\Http\Controllers\HomeController::class, 'borrowerDashboard'])->name('borrowerDashboard');
-
 
 //admin
 Route::get('/adminregister', [App\Http\Controllers\Admin\AdminLandingController::class, 'adminRegister'])->name('adminRegister');

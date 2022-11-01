@@ -19,7 +19,7 @@
 
         <div class="header-profile">
             <img class="profile-img" src="{{ asset('images/admin/user.png') }}" alt="user">
-            <button data-toggle="tooltip" title="Log Out" class="btn logout"><img src="{{ asset('images/admin/exit.png') }}" alt="exit"></button>
+            <a href="{{route('logout')}}"><button data-toggle="tooltip" title="Log Out" class="btn logout"><img src="{{ asset('images/admin/exit.png') }}" alt="exit"></button></a>
         </div>
     </div>
     <div class="wrapper">
