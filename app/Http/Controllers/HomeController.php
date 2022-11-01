@@ -46,4 +46,9 @@ class HomeController extends Controller
     {
         return view('borrowerHome');
     }
+    
+    public function onboarding()
+    {
+        return view('onboarding');
+    }
 }
