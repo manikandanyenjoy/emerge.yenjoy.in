@@ -16,6 +16,7 @@ class CreateKycsTable extends Migration
         Schema::create('kycs', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
+            $table->string('kyctype');
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('pan_number')->unique();
             $table->string('gender');
@@ -26,12 +27,12 @@ class CreateKycsTable extends Migration
             $table->integer('pincode');
             $table->boolean('MSME_cert');
             $table->boolean('GST_cert');
-            $table->boolean('2yrs_it_returns');
-            $table->boolean('1yr_business_statement');
+            $table->boolean('two_yrs_it_returns');
+            $table->boolean('one_yr_business_statement');
             $table->boolean('income_proof');
             $table->boolean('company_id_card');
-            $table->boolean('3months_payslip');
-            $table->boolean('6months_sal_statement');
+            $table->boolean('three_months_payslip');
+            $table->boolean('six_months_sal_statement');
             $table->timestamps();
             
             $table->foreign('user_id')

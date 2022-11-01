@@ -37,7 +37,7 @@
                                 </span>
                             @enderror
                         </div>
-                        @if(isset($data) && $data != 'admin')
+                        @if(isset($data) && $data != 'admin' || (!isset($data)))
                         <div class="form-group">
                             <label for="user">
                                 Mobile Number

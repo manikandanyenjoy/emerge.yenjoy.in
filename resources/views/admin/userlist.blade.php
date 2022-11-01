@@ -6,7 +6,7 @@
             <span>User Types</span>
             <div class="header-menu">
                 <a id="tab_lender" class="main-header-link is-active" href="JavaScript:void(0)">Lender</a>
-                <a id="tab_buyer" class="main-header-link" href="JavaScript:void(0)">Buyer</a>
+                <a id="tab_buyer" class="main-header-link" href="JavaScript:void(0)">Borrower</a>
             </div>
         </div>
         <div class="content-wrapper">

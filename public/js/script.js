@@ -48,29 +48,29 @@ $(document).ready(function () {
     //     validateUsername();
     // });
     
-    //     // element scroll top in view
-    //     var winTop, winBottom;
-    //     var $animation_elements = $(".contain-wrap");
-    //     var $window = $(window);
-    //     stayScroll = false;
-    //     getScroll = false;
+         // element scroll top in view
+         var winTop, winBottom;
+         var $animation_elements = $(".contain-wrap");
+         var $window = $(window);
+         stayScroll = false;
+         getScroll = false;
     
-    //     function check_if_in_view() {
-    //         var d = $window.height();
-    //         var f = $window.scrollTop();
-    //         var e = f + d;
-    //         $.each($animation_elements, function () {
-    //             var c = $(this);
-    //             var a = c.outerHeight();
-    //             var b = c.offset().top;
-    //             var h = b + a;
-    //             if (h >= f && b <= e) {
-    //                 c.addClass("in-view");
-    //             }
-    //         });
-    //     }
-    //     $window.on("scroll resize", check_if_in_view);
-    //     $window.trigger("scroll");
+         function check_if_in_view() {
+             var d = $window.height();
+             var f = $window.scrollTop();
+             var e = f + d;
+             $.each($animation_elements, function () {
+                 var c = $(this);
+                 var a = c.outerHeight();
+                 var b = c.offset().top;
+                 var h = b + a;
+                 if (h >= f && b <= e) {
+                     c.addClass("in-view");
+                 }
+             });
+         }
+         $window.on("scroll resize", check_if_in_view);
+         $window.trigger("scroll");
 
     // function validateUsername() {
     //     let usernameValue = $("#usernames").val();
@@ -168,20 +168,73 @@ $(document).ready(function () {
 
 //kyc Form submit
 
+$("#rd1 input:radio").click(function() {
+    alert("rd1");
+$("#kyctype").val("lender");
+});
+$("#rd2 input:radio").click(function() {
+    alert("rd2");
+$("#kyctype").val("borrower");
+});
+
+$.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        return this.optional(element) || regexp.test(value);
+    },
+    "Please check your input."
+);
   
 if ($("#kycForm").length > 0) {
-    alert("hi");
 $("#kycForm").validate({
 rules: {
-pan: {
-required: true,
-maxlength: 50
-},
+pan:{
+        required: true,
+        regex: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/
+    },
+gender:{
+        required: true,
+    },
+married_status:{
+        required: true,
+    },
+occupation:{
+        required: true,
+    },
+address:{
+        required: true,
+    },
+city:{
+        required: true,
+    },
+pincode:{
+        required: true,
+        digits: true
+    },
 },
 messages: {
 pan: {
-required: "Please enter pan",
-maxlength: "Your pan maxlength should be 50 characters long."
+required: 'Pan number is missing',
+regex: 'Please enter pan number format correct'
+},
+gender: {
+required: 'Please choose your gender',
+},
+married_status: {
+required: 'Please choose your Married Status',
+},
+occupation: {
+required: 'Please enter your occupation',
+},
+address: {
+required: 'Please enter your address',
+},
+city: {
+required: 'Please enter your city',
+},
+pincode: {
+required: 'Please enter your pincode',
+digits: 'Pincode should be in number format'
 },
 },
 submitHandler: function(form) {
@@ -197,21 +250,58 @@ url: '/kyc_create',
 type: "POST",
 data: $('#kycForm').serialize(),
 success: function( response ) {
-$('#kycsubmitbtn').html('Submit');
-$("#kycsubmitbtn"). attr("disabled", false);
-alert('Ajax form has been submitted successfully');
-document.getElementById("kycForm").reset(); 
+        $('#kycsubmitbtn').html('Submit');
+        $("#kycsubmitbtn"). attr("disabled", false);
+        alert('Ajax form has been submitted successfully');
+        document.getElementById("kycForm").reset();
+        location.reload();
+    },
+    error: function(response) {
+              console.log(response);
+          }
+});
 }
+})
+}
+
+  
+if ($("#msme_form").length > 0) {
+$("#msme_form").validate({
+rules: {
+myfile: { required: true, extension: "png|jpeg|jpg|gif", filesize: 1048576  }
+},
+messages: {
+myfile: "File must be JPG, GIF or PNG, less than 1MB",
+},
+submitHandler: function(form) {
+$.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+$.ajax({
+url: '/kyc_msme_submit',
+type: "POST",
+data: $('#msme_form').serialize(),
+success: function( response ) {
+        document.getElementById("msme_form").reset();
+        location.reload();
+    },
+    error: function(response) {
+              console.log(response);
+          }
 });
 }
 })
 }
 
 
-
     }); 
 
- 
+//KYC type get
+function handleClick(myRadio) {
+    $("#kyctype").val(myRadio.value);
+}
     
     const heading = document.querySelector("#heading");
 

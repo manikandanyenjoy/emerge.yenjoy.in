@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\View\Components\FlashMessages;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,6 +13,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    use FlashMessages;
+     
     public function register()
     {
         //
@@ -25,5 +28,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        view()->composer('partials.messages', function ($view) {
+
+          $messages = self::messages();
+
+          return $view->with('messages', $messages);
+      });
     }
 }

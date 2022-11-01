@@ -243,7 +243,7 @@
     <!-- End business Loan Section -->
 
     <div class="footer-banner">
-        <a href="lender-sign-up.html">
+        <a href="{{route('register')}}">
             <!-- <img class="w-100" src="images/end-banner.jpg" alt="Footer Banner"> -->
             <img class="w-100" src="images/ad-banner.jpg" alt="">
         </a>
