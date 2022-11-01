@@ -35,13 +35,13 @@
                             </thead>
                             <tbody>
                                 @forelse ($landers as $lander)
-                                    <tr>
+                                    <a href="{{url('/userDetails')}}"><tr>
                                         <td></td>
                                         <td>{{$lander->id}}</td>
-                                        <td>{{$lander->name}}</td>
+                                        <td><a href="{{url('/userDetails/'.base64_encode($lander->id))}}">{{$lander->name}}</a></td>
                                         <td>{{$lander->phone}}</td>
                                         <td><span>In Progress</span></td>
-                                    </tr>
+                                    </tr></a>
                                 @empty
                                     <tr>
                                         <td colspan="6" class="text-center">{{ __('No data Found...') }}</td>

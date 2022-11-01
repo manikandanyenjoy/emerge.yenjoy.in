@@ -41,3 +41,4 @@ Route::get('/borrowerdashboard', [App\Http\Controllers\HomeController::class, 'b
 Route::get('/adminregister', [App\Http\Controllers\Admin\AdminLandingController::class, 'adminRegister'])->name('adminRegister');
 Route::get('/admin', [App\Http\Controllers\Admin\AdminLandingController::class, 'adminLogin'])->name('adminLogin');
 Route::get('/dashboard', [App\Http\Controllers\Admin\UserManagementController::class, 'userList'])->name('userList');
+Route::get('/userDetails/{id}', [App\Http\Controllers\Admin\UserManagementController::class, 'userDetails'])->name('userDetails');

@@ -46,7 +46,7 @@
         </g>
         </svg>
       User Management
- </a>x
+ </a>
 
                 </div>
             </div>

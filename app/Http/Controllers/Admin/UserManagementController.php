@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\kyc;
 
 class UserManagementController extends Controller
 {
@@ -13,5 +14,11 @@ class UserManagementController extends Controller
         $barrowers = User::where('role','2')->orderBy('created_at', 'DESC')->paginate(20);
 
         return view('admin/userlist',compact('landers','barrowers'));
+    }
+
+    public function userDetails($id){
+
+        return view('admin/userdetails');
+
     }
 }

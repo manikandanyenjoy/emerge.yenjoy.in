@@ -1110,3 +1110,67 @@ tr td:last-child span.st-compt{
     padding: 0 30px;
 }
 }
+
+/* 30-10-22 */
+.each-detail h6 {
+  font-weight: 600;
+  font-size: 20px;
+}
+.each-detail a:hover {
+  text-decoration: none;
+}
+.details-caption {
+  margin-bottom: 20px;
+}
+.details-caption h2, .form-details-section h2 {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 32px;
+}
+.details-secton {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.each-detail {
+    margin-bottom: 10px;
+    width: calc(33.33% - 15px);
+}
+.form-details-section {
+  margin: 20px 0 0;
+}
+.form-details {
+  margin: 15px 0 0;
+}
+.form-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin: 15px 0 0;
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  width: calc(33.33% - 15px);
+}
+.group label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width:991px){
+  .each-detail, .group {
+    width: calc(50% - 15px);
+}
+}
+@media only screen and (max-width:991px){
+  .each-detail, .group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.details-secton, .form-details {
+  gap: 0;
+}
+}
