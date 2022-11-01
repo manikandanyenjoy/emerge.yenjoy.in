@@ -17,7 +17,7 @@
                     <div class="content-wrapper-header">
                         <div class="count-section">
                             <img src="{{ asset('images/admin/user-icon.png') }}" alt="User Icon">
-                            <span>{{count($landers)}}</span>
+                            <span>{{ count($landers) }}</span>
                         </div>
                         <label>Total Lenders</label>
                     </div>
@@ -35,19 +35,29 @@
                             </thead>
                             <tbody>
                                 @forelse ($landers as $lander)
-                                    <a href="{{url('/userDetails/'.base64_encode($lander->id))}}"><tr>
-                                        <td></td>
-                                        <td>{{$lander->id}}</td>
-                                        <td><a href="{{url('/userDetails/'.base64_encode($lander->id))}}">{{$lander->name}}</a></td>
-                                        <td>{{$lander->phone}}</td>
-                                        <td><span>In Progress</span></td>
-                                    </tr></a>
+                                    <a href="{{ url('/userDetails/' . base64_encode($lander->id)) }}">
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $lander->id }}</td>
+                                            <td><a
+                                                    href="{{ url('/userDetails/' . base64_encode($lander->id)) }}">{{ $lander->name }}</a>
+                                            </td>
+                                            <td>{{ $lander->phone }}</td>
+                                            <td><span>
+                                                    @if ($lander->role == 0)
+                                                        In Progress
+                                                    @else
+                                                        Competed
+                                                    @endif
+                                                </span></td>
+                                        </tr>
+                                    </a>
                                 @empty
                                     <tr>
                                         <td colspan="6" class="text-center">{{ __('No data Found...') }}</td>
                                     </tr>
                                 @endforelse
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -56,7 +66,7 @@
                     <div class="content-wrapper-header">
                         <div class="count-section">
                             <img src="{{ asset('images/admin/user-icon.png') }}" alt="User Icon">
-                            <span>{{count($barrowers)}}</span>
+                            <span>{{ count($barrowers) }}</span>
                         </div>
                         <label>Total Borrowers</label>
                     </div>
@@ -76,17 +86,25 @@
                                 @forelse ($barrowers as $barrower)
                                     <tr>
                                         <td></td>
-                                        <td>{{$barrower->id}}</td>
-                                        <td><a href="{{url('/userDetails/'.base64_encode($lander->id))}}">{{$barrower->name}}</a></td>
-                                        <td>{{$barrower->phone}}</td>
-                                        <td><span>In Progress</span></td>
+                                        <td>{{ $barrower->id }}</td>
+                                        <td><a
+                                                href="{{ url('/userDetails/' . base64_encode($barrower->id)) }}">{{ $barrower->name }}</a>
+                                        </td>
+                                        <td>{{ $barrower->phone }}</td>
+                                        <td><span>
+                                                @if ($barrower->role == 0)
+                                                    In Progress
+                                                @else
+                                                    Competed
+                                                @endif
+                                            </span></td>
                                     </tr>
                                 @empty
                                     <tr>
                                         <td colspan="6" class="text-center">{{ __('No data Found...') }}</td>
                                     </tr>
                                 @endforelse
-                                
+
                             </tbody>
                         </table>
                     </div>
