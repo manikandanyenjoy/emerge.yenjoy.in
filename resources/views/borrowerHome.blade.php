@@ -70,11 +70,11 @@
                 <div class="radio-parent">
             <label>Gender</label>
             <div class="radio">
-                <input id="radio-1" name="radio" type="radio" checked>
+                <input id="radio-1" name="radio" value="Male" type="radio" checked>
                 <label for="radio-1" class="radio-label">Male</label>
               </div>
               <div class="radio">
-                <input id="radio-2" name="radio" type="radio">
+                <input id="radio-2" name="radio" value="Female" type="radio">
                 <label  for="radio-2" class="radio-label">Female</label>
               </div>
               <h5 id="gender" style="color: red;">
@@ -84,11 +84,11 @@
             <div class="radio-parent">
                 <label>Marital Status</label>
                 <div class="radio">
-                    <input id="radio-3" name="radio-1" type="radio" checked>
+                    <input id="radio-3" name="radio-1" value="Married" type="radio" checked>
                     <label for="radio-3" class="radio-label">Married</label>
                   </div>
                   <div class="radio">
-                    <input id="radio-4" name="radio-1" type="radio">
+                    <input id="radio-4" name="radio-1" value="UnMarried" type="radio">
                     <label  for="radio-4" class="radio-label">Un Married</label>
                   </div>
                   <h5 id="marital" style="color: red;">

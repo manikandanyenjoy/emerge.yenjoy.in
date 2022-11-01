@@ -6,6 +6,7 @@
         <span>Customer Details</span>
     </div>
     <div class="content-wrapper">
+        @if($userdetails->kyctype=="lender")
         <div class="upload-items">
         <div class="details-caption">
             <h2>Lender</h2>
@@ -29,7 +30,7 @@
             </div>
         </div>
     </div>
-
+@else
     <div class="upload-items">
         <div class="details-caption">
             <h2>Borrower</h2>
@@ -57,41 +58,37 @@
             </div>
         </div>
     </div>
-
+@endif
         <div class="form-details-section">
             <h2>Form Details</h2>
         <div class="form-details">
             <div class="group">
                 <label>PAN Number</label>
-                <span>1234</span>
+                <span>{{$userdetails->pan_number}}</span>
             </div>
             <div class="group">
                 <label>Gender</label>
-                <span>Male</span>
+                <span>{{$userdetails->gender}}</span>
             </div>
             <div class="group">
                 <label>Marital Status</label>
-                <span>Married</span>
+                <span>{{$userdetails->marital_status}}</span>
             </div>
             <div class="group">
                 <label>Occupation</label>
-                <span>XXX</span>
-            </div>
-            <div class="group">
-                <label>Occupation</label>
-                <span>XXX</span>
+                <span>{{$userdetails->occupation}}</span>
             </div>
             <div class="group">
                 <label>Address</label>
-                <span>XXX</span>
+                <span>{{$userdetails->address}}</span>
             </div>
             <div class="group">
                 <label>City</label>
-                <span>XXX</span>
+                <span>{{$userdetails->city}}</span>
             </div>
             <div class="group">
                 <label>Pin Code</label>
-                <span>XXX</span>
+                <span>{{$userdetails->pincode}}</span>
             </div>
             
         </div>

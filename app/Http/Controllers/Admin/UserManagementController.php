@@ -17,8 +17,9 @@ class UserManagementController extends Controller
     }
 
     public function userDetails($id){
-
-        return view('admin/userdetails');
+        $userdetails = kyc::where('user_id',base64_decode($id))->first();
+      //  echo "<pre>";print_r($userdetails);exit;
+        return view('admin/userdetails',compact('userdetails'));
 
     }
 }
