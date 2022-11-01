@@ -115,20 +115,21 @@ class KycController extends Controller
             //check if file exist 
             if (request()->hasFile('myfile')){
                 $uploadedImage = $request->file('myfile');
-                $imageName = $uploadedImage->getClientOriginalName();
-                $destinationPath = public_path('/'.$whichFile.'/');
-                $uploadedImage->move($destinationPath, $imageName);
-                $uploadedImage->imagePath = $destinationPath . $imageName;
+                $file = $whichFile.'-'.time() . '.' .$uploadedImage->getClientOriginalExtension();
+                // echo "if <pre>";print_r($file);exit;
+                $destinationPath = public_path('/file_uploads/'.$whichFile.'/');
+                $uploadedImage->move($destinationPath, $file);
+                $uploadedImage->imagePath = $destinationPath . $file;
             }
             $currectuser = Auth::user()->id;
             $kyc = kyc::where('user_id',$currectuser)->first();
             if ($kyc != null) {
                 $id = $kyc->id;
                 $save = kyc::find($id);
-                $save->$whichFile = 1;
+                $save->$whichFile = $file;
             }else{
                 $save = new kyc;
-                $save->$whichFile = 1;
+                $save->$whichFile = $file;
                 $save->user_id = $currectuser;
             }
             $save->save();

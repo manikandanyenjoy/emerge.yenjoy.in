@@ -55,11 +55,15 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group requried">
+                        <div class="form-group requried password-field">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('password') }}</label>
-                            <input id="password" type="text"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required>
+                            <input id="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             <span class="otp-label">A 8-digit Requried</span>
+                            
+                                <span class="password-showhide">
+                                    <span class="show-password">Show</span>
+                                    <span class="hide-password">hide</span></span>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
