@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                                 @forelse ($landers as $lander)
-                                    <a href="{{url('/userDetails')}}"><tr>
+                                    <a href="{{url('/userDetails/'.base64_encode($lander->id))}}"><tr>
                                         <td></td>
                                         <td>{{$lander->id}}</td>
                                         <td><a href="{{url('/userDetails/'.base64_encode($lander->id))}}">{{$lander->name}}</a></td>
@@ -77,7 +77,7 @@
                                     <tr>
                                         <td></td>
                                         <td>{{$barrower->id}}</td>
-                                        <td>{{$barrower->name}}</td>
+                                        <td><a href="{{url('/userDetails/'.base64_encode($lander->id))}}">{{$barrower->name}}</a></td>
                                         <td>{{$barrower->phone}}</td>
                                         <td><span>In Progress</span></td>
                                     </tr>
