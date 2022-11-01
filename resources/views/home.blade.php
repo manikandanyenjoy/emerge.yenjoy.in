@@ -40,7 +40,7 @@
                             <?php } ?>
                         </div>
                         <p>MSME Certificate</p>
-                        <?php if(isset($kyc->MSME_cert) && $kyc->MSME_cert == null) { ?>
+                        @if(!isset($kyc->MSME_cert))
                         <div class="pan-input">
                             <form name="msme_form" id="msme_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
@@ -49,262 +49,330 @@
                             <input type="submit" class="choose-file"  value="Upload" />
                             </form>
                         </div>
-                        <?php } ?>
-                        
+                        @elseif(isset($kyc->MSME_cert) && ($kyc->MSME_cert == null))
+                        <div class="pan-input">
+                            <form name="msme_form" id="msme_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                                {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="MSME_cert" >
+                            <input type="submit" class="choose-file"  value="Upload" />
+                            </form>
+                        </div>
+                        @endif
                     </div>
-                    <!--<div class="cards">-->
-                    <!--    <div class="status">-->
-                    <!--        @if(!empty($kyc))-->
-                    <!--        <?php if($kyc->GST_cert != null) { ?>-->
-                    <!--        <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                    <!--        <?php } else { ?>-->
-                    <!--        <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                    <!--        <?php } ?>-->
-                    <!--        @endif-->
-                    <!--    </div>-->
-                    <!--    <p>GST Certificate</p>-->
-                    <!--    @if(!empty($kyc))-->
-                    <!--    <?php if($kyc->GST_cert == null) { ?>-->
-                    <!--    <div class="pan-input">-->
-                    <!--        <form name="gst_form" id="gst_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                    <!--        {!! csrf_field() !!}-->
-                    <!--        <input type="file" id="myfile" name="myfile" >-->
-                    <!--        <input type="hidden" name="whichFile" value="GST_cert" >-->
-                    <!--        <input type="submit" class="choose-file"  />-->
-                    <!--        </form>-->
-                    <!--    </div>-->
-                    <!--    <?php } ?>-->
-                    <!--    @endif-->
-                    <!--</div>-->
-                    <!--<div class="cards">-->
-                    <!--    <div class="status">-->
-                    <!--        @if(!empty($kyc))-->
-                    <!--        <?php if($kyc->two_yrs_it_returns != null) { ?>-->
-                    <!--        <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->GST_cert) && $kyc->GST_cert != null) { ?>
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
                             
-                    <!--        <?php } else { ?>-->
-                    <!--        <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                    <!--        <?php } ?>-->
-                    <!--        @endif-->
-                    <!--    </div>-->
-                    <!--    <p>Last 2 Years IT Returns</p>-->
-                    <!--    @if(!empty($kyc))-->
-                    <!--    <?php if($kyc->two_yrs_it_returns == null) { ?>-->
-                    <!--    <div class="pan-input">-->
-                    <!--        <form name="two_yrs_it_returns_form" id="two_yrs_it_returns_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                    <!--        {!! csrf_field() !!}-->
-                    <!--        <input type="file" id="myfile" name="myfile" >-->
-                    <!--        <input type="hidden" name="whichFile" value="two_yrs_it_returns" >-->
-                    <!--        <input type="submit" class="choose-file" />-->
-                    <!--        </form>-->
-                    <!--    </div>-->
-                    <!--    <?php } ?>-->
-                    <!--    @endif-->
-                    <!--</div>-->
-                    <!--<div class="cards">-->
-                    <!--    <div class="status">-->
-                    <!--        @if(!empty($kyc))-->
-                    <!--        <?php if($kyc->one_yr_business_statement != null) { ?>-->
-                    <!--        <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
+                        </div>
+                        <p>GST Certificate</p>
+                        @if(!isset($kyc->GST_cert))
+                        
+                        <div class="pan-input">
+                            <form name="gst_form" id="gst_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="GST_cert" >
+                            <input type="submit" class="choose-file"  value="Upload"/>
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->GST_cert) && ($kyc->GST_cert == null))
+                        
+                        <div class="pan-input">
+                            <form name="gst_form" id="gst_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="GST_cert" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->two_yrs_it_returns) && $kyc->two_yrs_it_returns != null) { ?>
                             
-                    <!--        <?php } else { ?>-->
-                    <!--        <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                    <!--        <?php } ?>-->
-                    <!--        @endif-->
-                    <!--    </div>-->
-                    <!--    <p>Last 1 Year Business Statement</p>-->
-                    <!--    @if(!empty($kyc))-->
-                    <!--    <?php if($kyc->one_yr_business_statement == null) { ?>-->
-                    <!--    <div class="pan-input">-->
-                    <!--        <form name="one_yr_business_statement_form" id="one_yr_business_statement_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                    <!--        {!! csrf_field() !!}-->
-                    <!--        <input type="file" id="myfile" name="myfile" >-->
-                    <!--        <input type="hidden" name="whichFile" value="one_yr_business_statement" >-->
-                    <!--        <input type="submit" class="choose-file"  />-->
-                    <!--        </form>-->
-                    <!--    </div>-->
-                    <!--    <?php } ?>-->
-                    <!--    @endif-->
-                    <!--</div>-->
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Last 2 Years IT Returns</p>
+                        @if(!isset($kyc->two_yrs_it_returns))
+                        <div class="pan-input">
+                            <form name="two_yrs_it_returns_form" id="two_yrs_it_returns_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="two_yrs_it_returns" >
+                            <input type="submit" class="choose-file" value="Upload"/>
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->two_yrs_it_returns) && ($kyc->two_yrs_it_returns == null))
+                        <div class="pan-input">
+                            <form name="two_yrs_it_returns_form" id="two_yrs_it_returns_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="two_yrs_it_returns" >
+                            <input type="submit" class="choose-file" value="Upload"/>
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->one_yr_business_statement) && $kyc->one_yr_business_statement != null) { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Last 1 Year Business Statement</p>
+                        @if(!isset($kyc->one_yr_business_statement))
+                        <div class="pan-input">
+                            <form name="one_yr_business_statement_form" id="one_yr_business_statement_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="one_yr_business_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->one_yr_business_statement) && ($kyc->one_yr_business_statement == null))
+                        <div class="pan-input">
+                            <form name="one_yr_business_statement_form" id="one_yr_business_statement_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="one_yr_business_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
                     
-                    <!--<div class="cards">-->
-                    <!--    <div class="status">-->
-                    <!--        @if(!empty($kyc))-->
-                    <!--        <?php if($kyc->pan_number != null && $kyc->kyctype == 'lender') { ?>-->
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->pan_number) && isset($kyc->pan_number) && $kyc->kyctype == 'lender') { ?>
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
                             
-                    <!--        <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                    <!--        <?php } else { ?>-->
-                    <!--        <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                    <!--        <?php } ?>-->
-                    <!--        @endif-->
-                    <!--    </div>-->
-                    <!--    <p>Pan, Address, City Etc.</p>-->
-                    <!--    @if(!empty($kyc))-->
-                    <!--    <?php if($kyc->pan_number == null && $kyc->kyctype != 'lender') { ?>-->
-                    <!--    <div class="pan-input">-->
-                    <!--        <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>-->
-                    <!--    </div>-->
-                    <!--    <?php } ?>-->
-                    <!--    @endif-->
-                    <!--</div>-->
+                        </div>
+                        <p>Pan, Address, City Etc.</p>
+                        
+                        @if(!isset($kyc->pan_number) && (!isset($kyc->kyctype)))
+                        <div class="pan-input">
+                            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>
+                        </div>
+                        @elseif(isset($kyc->pan_number) && isset($kyc->kyctype) && $kyc->kyctype == 'lender')
+                        <div class="pan-input">
+                            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>
+                        </div>
+                        @endif
+                    </div>
                     
                     
                 </div>
-                <!--<div class="documents-wrap borrower-form">-->
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->income_proof != null) { ?>-->
+                <div class="documents-wrap borrower-form">
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->income_proof) && $kyc->income_proof != null) { ?>
                             
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                <!--            <?php } else { ?>-->
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Income Proof</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->income_proof == null) { ?>-->
-                <!--        <div class="pan-input">-->
-                <!--            <form name="income_proof_form" id="income_proof_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                <!--            {!! csrf_field() !!}-->
-                <!--            <input type="file" id="myfile" name="myfile" >-->
-                <!--            <input type="hidden" name="whichFile" value="income_proof" >-->
-                <!--            <input type="submit" class="choose-file"  />-->
-                <!--            </form>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @endif-->
-                <!--    </div>-->
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->company_idcard != null) { ?>-->
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                <!--            <?php } else { ?>-->
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
                             
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Company ID Card</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->company_idcard == null) { ?>-->
-                <!--        <div class="pan-input">-->
-                <!--            <form name="company_id_form" id="company_id_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                <!--            {!! csrf_field() !!}-->
-                <!--            <input type="file" id="myfile" name="myfile" >-->
-                <!--            <input type="hidden" name="whichFile" value="company_idcard" >-->
-                <!--            <input type="submit" class="choose-file"  />-->
-                <!--            </form>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @endif-->
-                <!--    </div>-->
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->three_months_payslip != null) { ?>-->
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                            
-                <!--            <?php } else { ?>-->
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Last 3 Months Payslip</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->three_months_payslip == null) { ?>-->
-                <!--        <div class="pan-input">-->
-                <!--            <form name="three_months_payship_form" id="three_months_payship_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                <!--            {!! csrf_field() !!}-->
-                <!--            <input type="file" id="myfile" name="myfile" >-->
-                <!--            <input type="hidden" name="whichFile" value="three_months_payslip" >-->
-                <!--            <input type="submit" class="choose-file"  />-->
-                <!--            </form>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @endif-->
-                <!--    </div>-->
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->six_months_sal_statement != null) { ?>-->
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                            
-                <!--            <?php } else { ?>-->
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Last 6 Months Salary Statement</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->six_months_sal_statement == null) { ?>-->
-                <!--        <div class="pan-input">-->
-                <!--            <form name="six_months_sal_statement" id="six_months_sal_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                <!--            {!! csrf_field() !!}-->
-                <!--            <input type="file" id="myfile" name="myfile" >-->
-                <!--            <input type="hidden" name="whichFile" value="six_months_sal_statement" >-->
-                <!--            <input type="submit" class="choose-file"  />-->
-                <!--            </form>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @endif-->
-                <!--    </div>-->
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->one_yr_business_statement != null) { ?>-->
-                            
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                <!--            <?php } else { ?>-->
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Last 1 Year Business Statement</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->one_yr_business_statement == null) { ?>-->
-                <!--        <div class="pan-input">-->
-                <!--            <form name="one_yr_business_statement" id="one_yr_business_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">-->
-                <!--            {!! csrf_field() !!}-->
-                <!--            <input type="file" id="myfile" name="myfile" >-->
-                <!--            <input type="hidden" name="whichFile" value="one_yr_business_statement" >-->
-                <!--            <input type="submit" class="choose-file"  />-->
-                <!--            </form>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @endif-->
-                <!--    </div>-->
-                    
-                <!--    <div class="cards">-->
-                <!--        <div class="status">-->
-                <!--            @if(!empty($kyc))-->
-                <!--            <?php if($kyc->pan_number != null && $kyc->kyctype == 'borrower') { ?>-->
-                <!--            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>-->
-                <!--            <?php } else { ?>-->
-                            
-                <!--            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>-->
-                <!--            <?php } ?>-->
-                <!--            @endif-->
-                <!--        </div>-->
-                <!--        <p>Pan, Address, City Etc.</p>-->
-                <!--        @if(!empty($kyc))-->
-                <!--        <?php if($kyc->pan_number == null && $kyc->kyctype != 'borrower') { ?>-->
+                        </div>
+                        <p>Income Proof</p>
                         
-                <!--        <div class="pan-input">-->
-                <!--            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>-->
-                <!--        </div>-->
-                <!--        <?php } ?>-->
-                <!--        @else-->
-                <!--        <div class="pan-input">-->
-                <!--            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>-->
-                <!--        </div>-->
-                <!--        @endif-->
-                <!--    </div>-->
+                        @if(!isset($kyc->income_proof))
+                        <div class="pan-input">
+                            <form name="income_proof_form" id="income_proof_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="income_proof" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->income_proof) && ($kyc->income_proof == null))
+                        <div class="pan-input">
+                            <form name="income_proof_form" id="income_proof_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="income_proof" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->company_idcard) && $kyc->company_idcard != null) { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Company ID Card</p>
+                        
+                        @if(!isset($kyc->company_idcard))
+                        <div class="pan-input">
+                            <form name="company_id_form" id="company_id_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="company_idcard" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->company_idcard) && ($kyc->company_idcard == null))
+                        <div class="pan-input">
+                            <form name="company_id_form" id="company_id_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="company_idcard" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->three_months_payslip) && $kyc->three_months_payslip != null) { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Last 3 Months Payslip</p>
+                        
+                        @if(!isset($kyc->three_months_payslip))
+                        <div class="pan-input">
+                            <form name="three_months_payship_form" id="three_months_payship_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="three_months_payslip" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->three_months_payslip) && ($kyc->three_months_payslip == null))
+                        <div class="pan-input">
+                            <form name="three_months_payship_form" id="three_months_payship_form" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="three_months_payslip" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->six_months_sal_statement) && $kyc->six_months_sal_statement != null) { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Last 6 Months Salary Statement</p>
+                        
+                        @if(!isset($kyc->six_months_sal_statement))
+                        <div class="pan-input">
+                            <form name="six_months_sal_statement" id="six_months_sal_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="six_months_sal_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->six_months_sal_statement) && ($kyc->six_months_sal_statement == null))
+                        <div class="pan-input">
+                            <form name="six_months_sal_statement" id="six_months_sal_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="six_months_sal_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->one_yr_business_statement) && $kyc->one_yr_business_statement != null) { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Last 1 Year Business Statement</p>
+                        
+                        @if(!isset($kyc->one_yr_business_statement))
+                        <div class="pan-input">
+                            <form name="one_yr_business_statement" id="one_yr_business_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="one_yr_business_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @elseif(isset($kyc->one_yr_business_statement) && ($kyc->one_yr_business_statement == null))
+                        <div class="pan-input">
+                            <form name="one_yr_business_statement" id="one_yr_business_statement" method="post" action="/kyc_file_submit" enctype="multipart/form-data">
+                            {!! csrf_field() !!}
+                            <input type="file" id="myfile" name="myfile" >
+                            <input type="hidden" name="whichFile" value="one_yr_business_statement" >
+                            <input type="submit" class="choose-file" value="Upload" />
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    
+                    <div class="cards">
+                        <div class="status">
+                            <?php  if(isset($kyc->pan_number) && isset($kyc->pan_number) && $kyc->kyctype == 'borrower') { ?>
+                            
+                            <span class="uploaded"><img class="cards-icon" src="images/select.png" alt="select"> Success</span>
+                            <?php } else { ?>
+                            
+                            <span class="waiting"><img class="cards-icon" src="images/warning.png" alt="warning"> Pending</span>
+                            <?php } ?>
+                            
+                        </div>
+                        <p>Pan, Address, City Etc.</p>
+                        
+                        @if(!isset($kyc->pan_number) && (!isset($kyc->kyctype)))
+                        
+                        <div class="pan-input">
+                            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>
+                        </div>
+                        @elseif(isset($kyc->pan_number) && isset($kyc->pan_number) && $kyc->kyctype == 'borrower')
+                        <div class="pan-input">
+                            <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="form-popup btn btn-primary">Add Here</button>
+                        </div>
+                        @endif
+                    </div>
                    
                     
-                <!--</div>-->
+                </div>
                 
             </div>
 

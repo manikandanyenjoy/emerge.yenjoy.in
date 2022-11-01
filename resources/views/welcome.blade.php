@@ -32,7 +32,7 @@
                             </li>
                             @if (Route::has('login'))
                                 @auth
-                                    <li><a href="{{ url('/home') }}">Lenders</a></li>
+                                    <li><a href="{{ url('/onboarding') }}">Dashboard</a></li>
                                 @else
                                     <li><a href="javascript:;">About</a></li>
                                     @if (Route::has('register'))

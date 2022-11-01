@@ -29,6 +29,7 @@ Route::get('/borrowerlogin', [App\Http\Controllers\Auth\LoginController::class, 
 Route::get('/borrower', [App\Http\Controllers\Auth\RegisterController::class, 'borrowerRegister'])->name('borrowerRegister');
 Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/onboarding', [App\Http\Controllers\HomeController::class, 'onboarding'])->name('onboarding');
 Route::get('/test/purchase', [App\Http\Controllers\OtpController::class, 'confirmationPage']);
 Route::post('/kyc_create', [App\Http\Controllers\KycController::class, 'create'])->name('kyc_create');
 Route::post('/kyc_file_submit', [App\Http\Controllers\KycController::class, 'file_submit'])->name('kyc_file_submit');
