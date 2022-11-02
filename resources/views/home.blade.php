@@ -42,6 +42,7 @@
                         @endif
                     </div>
                 </form>
+                @if(!isset($kyc->kyctype))
                 <div class="svg-arrow-img">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         x="0px" y="0px" viewBox="0 0 43.1 85.9" style="enable-background:new 0 0 43.1 85.9;"
@@ -55,6 +56,7 @@
                     </svg>
                     <span class="select-one-checkbox">Select Any One</span>
                 </div>
+                @endif
             </div>
             <div class="both-forms">
                 @if (isset($kyc->kyctype) && $kyc->kyctype == 'lender')
