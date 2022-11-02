@@ -7,7 +7,7 @@
             <ul>
                 <li class="static-label"><label>onboarding</label></li>
                 <li><a href="/onboarding">Lender Onboarding</a></li>
-                <li class="active"><a href="javascript:;">KYC Documents</a></li>
+                <li class="active"><a href="/home">KYC Documents</a></li>
                 <li class="static-label"><label>account</label></li>
                 <li><a href="javascript:;">Settings</a></li>
                 <li><a href="javascript:;">Bank Account Details</a></li>
