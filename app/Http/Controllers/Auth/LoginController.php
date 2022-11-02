@@ -29,13 +29,10 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         $user_role = Auth::user()->role;
-        if($user_role==1){
+        if($user_role==1 || $user_role==2 || $user_role==0){
             //Lenders Dashboard
             return '/home';
-        }elseif($user_role==2){
-            //borrower Dashboard
-            return '/borrowerdashboard';
-        }else{
+        }elseif($user_role==3){
             return '/dashboard';
         }
         

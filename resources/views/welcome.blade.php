@@ -69,7 +69,7 @@
                                 <li>Emerge is registered as an NBFC-P2P</li>
                                 <li>Emerge is registered with RBI (CoR No. N - 02.00299)</li>
                             </ul>
-                            <button class="custom-btn btn-11"><a href="lender-sign-up.html"> Open a Free Lending
+                            <button class="custom-btn btn-11"><a href="{{route('register')}}"> Open a Free Lending
                                     Account</a>
                                 <div class="dot"></div>
                             </button>
